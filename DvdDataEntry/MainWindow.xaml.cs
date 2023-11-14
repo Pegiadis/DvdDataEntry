@@ -93,5 +93,23 @@ namespace DvdDataEntry
         {
 
         }
+
+        private void ActorsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementation for when the Actors button is clicked
+            // For example, navigate to the Actors view or page
+        }
+
+        private void MoviesButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementation for when the Movies button is clicked
+            // This could be the current view, so you might not need to do anything
+        }
+
+        private void CustomersButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementation for when the Customers button is clicked
+            // For example, navigate to the Customers view or page
+        }
     }
 }
