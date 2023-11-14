@@ -10,5 +10,7 @@ namespace DvdDataEntry.Models
     {
         public string Title { get; set; }
         public string Genre { get; set; }
+        public string Company { get; set; }
+        
     }
 }

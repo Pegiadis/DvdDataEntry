@@ -37,8 +37,8 @@ namespace DvdDataEntry
             var newEntry = new CustomerModel
             {
                 Title = titleTextBox.Text,
-                Genre = genreTextBox.Text
-                // Set other properties if necessary
+                Genre = genreTextBox.Text,
+                Company = companyTextBox.Text
             };
 
             entries.Add(newEntry);
@@ -47,6 +47,7 @@ namespace DvdDataEntry
             // Optionally, clear the text boxes after adding
             titleTextBox.Clear();
             genreTextBox.Clear();
+            companyTextBox.Clear();
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
