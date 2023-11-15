@@ -50,6 +50,7 @@ namespace DvdDataEntry
             companyTextBox.Clear();
         }
 
+        // add a method to handle the remove button click event
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedItems = dataGrid.SelectedItems.Cast<CustomerModel>().ToList();
