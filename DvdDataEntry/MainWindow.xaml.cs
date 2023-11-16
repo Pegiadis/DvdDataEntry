@@ -37,8 +37,8 @@ namespace DvdDataEntry
             var newEntry = new CustomerModel
             {
                 Title = titleTextBox.Text,
-                Genre = genreTextBox.Text
-                // Set other properties if necessary
+                Genre = genreTextBox.Text,
+                Company = companyTextBox.Text
             };
 
             entries.Add(newEntry);
@@ -47,8 +47,10 @@ namespace DvdDataEntry
             // Optionally, clear the text boxes after adding
             titleTextBox.Clear();
             genreTextBox.Clear();
+            companyTextBox.Clear();
         }
 
+        // add a method to handle the remove button click event
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedItems = dataGrid.SelectedItems.Cast<CustomerModel>().ToList();
@@ -91,6 +93,24 @@ namespace DvdDataEntry
         private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
 
+        }
+
+        private void ActorsButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementation for when the Actors button is clicked
+            // For example, navigate to the Actors view or page
+        }
+
+        private void MoviesButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementation for when the Movies button is clicked
+            // This could be the current view, so you might not need to do anything
+        }
+
+        private void CustomersButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Implementation for when the Customers button is clicked
+            // For example, navigate to the Customers view or page
         }
     }
 }
