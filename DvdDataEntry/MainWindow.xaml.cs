@@ -21,7 +21,7 @@ namespace DvdDataEntry
     /// </summary>
     public partial class MainWindow : Window
     {
-        private List<CustomerModel> entries = new List<CustomerModel>();
+        private List<ActorModel> entries = new List<ActorModel>();
 
         public MainWindow()
         {
@@ -34,26 +34,26 @@ namespace DvdDataEntry
             // Your logic for adding data goes here
             // For example, retrieving data from text boxes and adding it to a list or database
 
-            var newEntry = new CustomerModel
+            var newEntry = new ActorModel
             {
-                Title = titleTextBox.Text,
-                Genre = genreTextBox.Text,
-                Company = companyTextBox.Text
+                ActorId = actorIdTextBox.Text,
+                FirstName = firstNameTextBox.Text,
+                LastName = lastNameTextBox.Text
             };
 
             entries.Add(newEntry);
             dataGrid.Items.Refresh();
 
             // Optionally, clear the text boxes after adding
-            titleTextBox.Clear();
-            genreTextBox.Clear();
-            companyTextBox.Clear();
+            actorIdTextBox.Clear();
+            firstNameTextBox.Clear();
+            lastNameTextBox.Clear();
         }
 
         // add a method to handle the remove button click event
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItems = dataGrid.SelectedItems.Cast<CustomerModel>().ToList();
+            var selectedItems = dataGrid.SelectedItems.Cast<ActorModel>().ToList();
             if (selectedItems.Count > 0)
             {
                 foreach (var item in selectedItems)
@@ -65,35 +65,6 @@ namespace DvdDataEntry
             }
         }
 
-
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
-            {
-                if (textBox.Text == "Title" || textBox.Text == "Genre")
-                {
-                    textBox.Text = "";
-                }
-            }
-        }
-
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
-        {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
-            {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
-                {
-                    textBox.Text = textBox.Name == "titleTextBox" ? "Title" : "Genre";
-                }
-            }
-        }
-
-        private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-
-        }
 
         private void ActorsButton_Click(object sender, RoutedEventArgs e)
         {

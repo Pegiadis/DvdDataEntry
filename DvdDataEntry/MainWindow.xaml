@@ -42,14 +42,14 @@
                 </Grid.RowDefinitions>
 
                 <!-- Labels and Text Boxes -->
-                <Label Grid.Row="0" Grid.Column="0" Content="Title" HorizontalAlignment="Center"/>
-                <TextBox x:Name="titleTextBox" Grid.Row="1" Grid.Column="0" Width="200" Margin="5"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Actor ID" HorizontalAlignment="Center"/>
+                <TextBox x:Name="actorIdTextBox" Grid.Row="1" Grid.Column="0" Width="200" Margin="5"/>
 
-                <Label Grid.Row="0" Grid.Column="1" Content="Genre" HorizontalAlignment="Center"/>
-                <TextBox x:Name="genreTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="5"/>
+                <Label Grid.Row="0" Grid.Column="1" Content="First Name" HorizontalAlignment="Center"/>
+                <TextBox x:Name="firstNameTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="5"/>
 
-                <Label Grid.Row="0" Grid.Column="2" Content="Company" HorizontalAlignment="Center"/>
-                <TextBox x:Name="companyTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="Last Name" HorizontalAlignment="Center"/>
+                <TextBox x:Name="lastNameTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
 
                 <!-- Add Button -->
                 <Button x:Name="addButton" Content="Add" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Click="AddButton_Click" Margin="3" Width="100" Height="25" HorizontalAlignment="Center"/>
@@ -58,9 +58,9 @@
             <!-- DataGrid to Display Data -->
             <DataGrid x:Name="dataGrid" Margin="10,0,10,10" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
-                    <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"/>
-                    <DataGridTextColumn Header="Company" Binding="{Binding Company}"/>
+                    <DataGridTextColumn Header="Actor ID" Binding="{Binding ActorId}"/>
+                    <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
                     <!-- Other columns as needed -->
                 </DataGrid.Columns>
             </DataGrid>

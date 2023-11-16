@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace DvdDataEntry.Models
 {
-    class CustomerModel
+    internal class ActorModel
     {
-        public string Title { get; set; }
-        public string Genre { get; set; }
-        public string Company { get; set; }
-        
+        public string ActorId { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
     }
 }
