@@ -8,7 +8,7 @@ namespace DvdDataEntry.Models
 {
     internal class ActorModel
     {
-        public string ActorId { get; set; }
+        public int ActorId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }

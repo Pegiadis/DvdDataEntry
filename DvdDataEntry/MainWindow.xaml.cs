@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DvdDataEntry.Models;
+using Npgsql;
 
 namespace DvdDataEntry
 {
@@ -31,24 +33,46 @@ namespace DvdDataEntry
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // Your logic for adding data goes here
-            // For example, retrieving data from text boxes and adding it to a list or database
-
-            var newEntry = new ActorModel
+            if (int.TryParse(actorIdTextBox.Text, out int actorId))
             {
-                ActorId = actorIdTextBox.Text,
-                FirstName = firstNameTextBox.Text,
-                LastName = lastNameTextBox.Text
-            };
+                var newEntry = new ActorModel
+                {
+                    ActorId = actorId,
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text
+                };
 
-            entries.Add(newEntry);
-            dataGrid.Items.Refresh();
+                try
+                {
+                    using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MyDBConnectionString"].ConnectionString))
+                    {
+                        conn.Open();
+                        using (var cmd = new NpgsqlCommand("INSERT INTO actor (actor_id, first_name, last_name) VALUES (@actor_id, @first_name, @last_name)", conn))
+                        {
+                            cmd.Parameters.AddWithValue("actor_id", newEntry.ActorId);
+                            cmd.Parameters.AddWithValue("first_name", newEntry.FirstName);
+                            cmd.Parameters.AddWithValue("last_name", newEntry.LastName);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
 
-            // Optionally, clear the text boxes after adding
-            actorIdTextBox.Clear();
-            firstNameTextBox.Clear();
-            lastNameTextBox.Clear();
+                    actorIdTextBox.Clear();
+                    firstNameTextBox.Clear();
+                    lastNameTextBox.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Actor ID must be an integer.");
+            }
         }
+
+
+
 
         // add a method to handle the remove button click event
         private void RemoveButton_Click(object sender, RoutedEventArgs e)

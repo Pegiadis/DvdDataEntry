@@ -60,7 +60,7 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Actor ID" Binding="{Binding ActorId}"/>
                     <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
-                    <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                    <DataGridTextColumn Header=" Name" Binding="{Binding LastName}"/>
                     <!-- Other columns as needed -->
                 </DataGrid.Columns>
             </DataGrid>
