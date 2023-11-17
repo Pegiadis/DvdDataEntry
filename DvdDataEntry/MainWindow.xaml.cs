@@ -31,7 +31,53 @@ namespace DvdDataEntry
             dataGrid.ItemsSource = entries;
         }
 
+
         private void AddButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (int.TryParse(actorIdTextBox.Text, out int actorId))
+            {
+
+                var newEntry = new ActorModel
+                {
+                    ActorId = actorId,
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text
+                };
+
+                entries.Add(newEntry);
+                dataGrid.Items.Refresh();
+
+                // Optionally, clear the text boxes after adding
+                actorIdTextBox.Clear();
+                firstNameTextBox.Clear();
+                lastNameTextBox.Clear();
+            }
+            else
+            {
+                MessageBox.Show("Actor ID must be an integer.");
+            }
+        }
+
+
+
+
+        // add a method to handle the remove button click event
+        private void RemoveButton_Click(object sender, RoutedEventArgs e)
+        {
+            var selectedItems = dataGrid.SelectedItems.Cast<ActorModel>().ToList();
+            if (selectedItems.Count > 0)
+            {
+                foreach (var item in selectedItems)
+                {
+                    entries.Remove(item);
+                }
+
+                dataGrid.Items.Refresh();
+            }
+        }
+
+
+        private void AddToDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(actorIdTextBox.Text, out int actorId))
             {
@@ -68,24 +114,6 @@ namespace DvdDataEntry
             else
             {
                 MessageBox.Show("Actor ID must be an integer.");
-            }
-        }
-
-
-
-
-        // add a method to handle the remove button click event
-        private void RemoveButton_Click(object sender, RoutedEventArgs e)
-        {
-            var selectedItems = dataGrid.SelectedItems.Cast<ActorModel>().ToList();
-            if (selectedItems.Count > 0)
-            {
-                foreach (var item in selectedItems)
-                {
-                    entries.Remove(item);
-                }
-
-                dataGrid.Items.Refresh();
             }
         }
 

@@ -7,7 +7,8 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200"/>
             <!-- Side Menu -->
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="83*"/>
             <!-- Main Content -->
         </Grid.ColumnDefinitions>
 
@@ -19,7 +20,7 @@
         </StackPanel>
 
         <!-- Main Content -->
-        <Grid Grid.Column="1">
+        <Grid Grid.Column="1" Grid.ColumnSpan="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -52,11 +53,16 @@
                 <TextBox x:Name="lastNameTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
 
                 <!-- Add Button -->
-                <Button x:Name="addButton" Content="Add" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Click="AddButton_Click" Margin="3" Width="100" Height="25" HorizontalAlignment="Center"/>
+                <Button x:Name="addButton" Content="Add" Grid.Row="3" Grid.Column="0" Click="AddButton_Click" Margin="160,8,0,-17" Width="100" Height="25" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+
+                <!-- Remove Button -->
+                <Button x:Name="removeButton" Content="Remove" Grid.Row="3" Grid.Column="1" Click="RemoveButton_Click" Margin="88,12,0,-13" Width="100" Height="25" HorizontalAlignment="Left" RenderTransformOrigin="-0.411,0.62"/>
+
+                <!-- Add to Database Button -->
             </Grid>
 
             <!-- DataGrid to Display Data -->
-            <DataGrid x:Name="dataGrid" Margin="10,0,10,10" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
+            <DataGrid x:Name="dataGrid" Margin="10,18,10,54" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Actor ID" Binding="{Binding ActorId}"/>
                     <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
@@ -64,9 +70,7 @@
                     <!-- Other columns as needed -->
                 </DataGrid.Columns>
             </DataGrid>
-
-            <!-- Remove Button -->
-            <Button x:Name="removeButton" Content="Remove" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Click="RemoveButton_Click" Margin="3" HorizontalAlignment="Center" Width="100" Height="25"/>
+            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="0,297,0,14" Width="100" Height="25" HorizontalAlignment="Center"/>
         </Grid>
     </Grid>
 </Window>
