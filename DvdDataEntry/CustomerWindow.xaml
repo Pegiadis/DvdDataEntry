@@ -14,9 +14,9 @@
 
         <!-- Side Menu -->
         <StackPanel Grid.Column="0" Background="Tomato" Margin="0,0,27,0">
-            <Button Content="Actors" Click="ActorsButton_Click" Margin="5"/>
-            <Button Content="Movies" Click="MoviesButton_Click" Margin="5"/>
-            <Button Content="Customers" Click="CustomersButton_Click" Margin="5"/>
+            <Button Content="Actors" Click="ActorsButton_Click" Margin="5" Width="159"/>
+            <Button Content="Movies" Click="MoviesButton_Click" Margin="5" Width="160"/>
+            <Button Content="Customers" Click="CustomersButton_Click" Margin="5" Width="157"/>
         </StackPanel>
 
         <!-- Main Content -->
@@ -69,16 +69,14 @@
                 <TextBox x:Name="addressIdTextBox" Grid.Row="6" Grid.Column="2" Width="200" Margin="5"/>
 
                 <!-- Add Button -->
-                <Button x:Name="addButton" Content="Add" Grid.Row="6" Grid.Column="0" Click="AddButton_Click" Margin="142,55,0,-52" Width="100" Height="25" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
 
                 <!-- Remove Button -->
-                <Button x:Name="removeButton" Content="Remove" Grid.Row="6" Grid.Column="1" Click="RemoveButton_Click" Margin="97,55,0,-52" Width="100" Height="25" HorizontalAlignment="Left" RenderTransformOrigin="-0.411,0.62" Grid.ColumnSpan="2"/>
 
                 <!-- Add to Database Button -->
             </Grid>
 
             <!-- DataGrid to Display Data -->
-            <DataGrid x:Name="dataGrid" Margin="-14,70,20,53" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
+            <DataGrid x:Name="dataGrid" Margin="-14,84,20,53" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Customer ID" Binding="{Binding CustomerId}"/>
                     <DataGridTextColumn Header="Store ID" Binding="{Binding StoreId}"/>
@@ -90,7 +88,9 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="0,297,0,14" Width="100" Height="25" HorizontalAlignment="Center"/>
+            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="233,268,0,0" Width="100" Height="38" VerticalAlignment="Top"/>
+            <Button x:Name="addButton" Content="Add" Grid.Column="0" Click="AddButton_Click" Margin="149,29,0,0" Width="100" Height="38" Grid.Row="1" VerticalAlignment="Top"/>
+            <Button x:Name="removeButton" Content="Remove" Click="RemoveButton_Click" Margin="283,29,0,0" Width="100" Height="38" RenderTransformOrigin="-0.411,0.62" Grid.Row="1" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

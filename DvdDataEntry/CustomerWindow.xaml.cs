@@ -20,16 +20,38 @@ namespace DvdDataEntry
 
         private void ActorsButton_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow actorWindow = new MainWindow();
-            actorWindow.Show();
-            this.Close();
+            try
+            {
+                MainWindow actorWindow = new MainWindow();
+                PositionNewWindow(actorWindow);
+                actorWindow.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
 
         private void MoviesButton_Click(object sender, RoutedEventArgs e)
         {
-            MoviesWindow moviesWindow = new MoviesWindow();
-            moviesWindow.Show();
-            this.Close();
+            try
+            {
+                MoviesWindow moviesWindow = new MoviesWindow();
+                PositionNewWindow(moviesWindow);
+                moviesWindow.Show();
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
+
+        private void PositionNewWindow(Window newWindow)
+        {
+            newWindow.Left = this.Left;
+            newWindow.Top = this.Top;
         }
 
         private void CustomersButton_Click(object sender, RoutedEventArgs e)

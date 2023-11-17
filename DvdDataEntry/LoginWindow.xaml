@@ -26,13 +26,12 @@
         <!-- Replace with your image path -->
     </Window.Background>
 
-    <StackPanel Margin="0,0,0,-61">
-        <Label Content="Username"/>
-        <TextBox x:Name="usernameTextBox" Style="{StaticResource TextBoxStyle}"/>
+    <StackPanel Margin="0,0,0,-61" RenderTransformOrigin="0.499,0.771">
+        <Label Content="Username" HorizontalAlignment="Center"/>
+        <TextBox x:Name="usernameTextBox" Width="200"  Style="{StaticResource TextBoxStyle}"/>
 
-        <Label Content="Password"/>
-        <PasswordBox x:Name="passwordBox" Style="{StaticResource PasswordBoxStyle}"/>
-
-        <Button Content="Login" Click="LoginButton_Click" Style="{StaticResource ButtonStyle}"/>
+        <Label Content="Password" HorizontalAlignment="Center"/>
+        <PasswordBox x:Name="passwordBox" Width="200" Style="{StaticResource PasswordBoxStyle}"/>
+        <Button Content="Login" Click="LoginButton_Click" Width="300" Style="{StaticResource ButtonStyle}" Height="54"/>
     </StackPanel>
 </Window>

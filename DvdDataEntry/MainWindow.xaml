@@ -14,13 +14,13 @@
 
         <!-- Side Menu -->
         <StackPanel Grid.Column="0" Background="Tomato" Margin="0,0,27,0">
-            <Button Content="Actors" Click="ActorsButton_Click" Margin="5"/>
-            <Button Content="Movies" Click="MoviesButton_Click" Margin="5"/>
-            <Button Content="Customers" Click="CustomersButton_Click" Margin="5"/>
+            <Button Content="Actors" Click="ActorsButton_Click" Margin="5" Width="156"/>
+            <Button Content="Movies" Click="MoviesButton_Click" Margin="5" Width="153"/>
+            <Button Content="Customers" Click="CustomersButton_Click" Margin="5" Width="151"/>
         </StackPanel>
 
         <!-- Main Content -->
-        <Grid Grid.Column="1" Grid.ColumnSpan="2">
+        <Grid Grid.ColumnSpan="3" Margin="178,10,22,-10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -53,16 +53,16 @@
                 <TextBox x:Name="lastNameTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
 
                 <!-- Add Button -->
-                <Button x:Name="addButton" Content="Add" Grid.Row="3" Grid.Column="0" Click="AddButton_Click" Margin="160,8,0,-17" Width="100" Height="25" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>
+                <Button x:Name="addButton" Content="Add" Grid.Row="3" Grid.Column="0" Click="AddButton_Click" Margin="151,23,0,0" Width="100" Height="46" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
 
                 <!-- Remove Button -->
-                <Button x:Name="removeButton" Content="Remove" Grid.Row="3" Grid.Column="1" Click="RemoveButton_Click" Margin="88,12,0,-13" Width="100" Height="25" HorizontalAlignment="Left" RenderTransformOrigin="-0.411,0.62"/>
+                <Button x:Name="removeButton" Content="Remove" Grid.Row="3" Grid.Column="1" Click="RemoveButton_Click" Margin="84,23,0,0" Width="100" Height="48" RenderTransformOrigin="-0.411,0.62" VerticalAlignment="Top"/>
 
                 <!-- Add to Database Button -->
             </Grid>
 
             <!-- DataGrid to Display Data -->
-            <DataGrid x:Name="dataGrid" Margin="10,18,10,54" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
+            <DataGrid x:Name="dataGrid" Margin="10,10,10,75" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Actor ID" Binding="{Binding ActorId}"/>
                     <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
@@ -70,7 +70,7 @@
                     <!-- Other columns as needed -->
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="0,297,0,14" Width="100" Height="25" HorizontalAlignment="Center"/>
+            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="0,214,0,0" Width="100" Height="33" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>
