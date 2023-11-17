@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DvdDataEntry.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Background="Tan"
+        Background="Gray"
         Title="DVD Data Entry" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
 
         <!-- Side Menu -->
-        <StackPanel Grid.Column="0" Background="LightGray">
+        <StackPanel Grid.Column="0" Background="Tomato" Margin="0,0,27,0">
             <Button Content="Actors" Click="ActorsButton_Click" Margin="5"/>
             <Button Content="Movies" Click="MoviesButton_Click" Margin="5"/>
             <Button Content="Customers" Click="CustomersButton_Click" Margin="5"/>

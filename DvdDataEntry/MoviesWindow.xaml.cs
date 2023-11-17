@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace DvdDataEntry
 {
     /// <summary>
-    /// Interaction logic for ActorsWindow.xaml
+    /// Interaction logic for MoviesWindow.xaml
     /// </summary>
-    public partial class ActorsWindow : Window
+    public partial class MoviesWindow : Window
     {
-        public ActorsWindow()
+        public MoviesWindow()
         {
             InitializeComponent();
         }
