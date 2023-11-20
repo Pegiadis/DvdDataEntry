@@ -70,7 +70,7 @@
                     <!-- Other columns as needed -->
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="0,214,0,0" Width="100" Height="33" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="0,214,0,0" Width="147" Height="33" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Grid>
     </Grid>
 </Window>

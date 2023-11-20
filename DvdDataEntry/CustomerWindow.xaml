@@ -88,7 +88,7 @@
 
                 </DataGrid.Columns>
             </DataGrid>
-            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="233,268,0,0" Width="100" Height="38" VerticalAlignment="Top"/>
+            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="214,278,0,0" Width="138" Height="38" VerticalAlignment="Top"/>
             <Button x:Name="addButton" Content="Add" Grid.Column="0" Click="AddButton_Click" Margin="149,29,0,0" Width="100" Height="38" Grid.Row="1" VerticalAlignment="Top"/>
             <Button x:Name="removeButton" Content="Remove" Click="RemoveButton_Click" Margin="283,29,0,0" Width="100" Height="38" RenderTransformOrigin="-0.411,0.62" Grid.Row="1" VerticalAlignment="Top"/>
         </Grid>

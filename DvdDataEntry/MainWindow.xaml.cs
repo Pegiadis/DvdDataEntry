@@ -129,11 +129,19 @@ namespace DvdDataEntry
      
         }
 
+
         private void CustomersButton_Click(object sender, RoutedEventArgs e)
         {
             CustomerWindow customerWindow = new CustomerWindow();
+
+            // Set the position of the new window to match the main window
+            customerWindow.Left = this.Left;
+            customerWindow.Top = this.Top;
+
             customerWindow.Show();
             this.Close();
         }
+
+
     }
 }
