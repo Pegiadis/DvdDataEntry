@@ -49,23 +49,23 @@
                 </Grid.RowDefinitions>
 
                 <!-- Labels and Text Boxes -->
-                <Label Grid.Row="0" Grid.Column="0" Content="Customer ID" HorizontalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Customer ID" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="customerIdTextBox" Grid.Row="1" Grid.Column="0" Width="200" Margin="5"/>
 
-                <Label Grid.Row="0" Grid.Column="1" Content="Store ID" HorizontalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="1" Content="Store ID" HorizontalAlignment="Center" FontWeight="Bold" />
                 <TextBox x:Name="storeIdTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="5"/>
 
-                <Label Grid.Row="0" Grid.Column="2" Content="First Name" HorizontalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="First Name" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="firstNameTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
 
                 <!-- New Label and TextBox for Email -->
-                <Label Grid.Row="5" Grid.Column="0" Content="Last Name" HorizontalAlignment="Center"/>
+                <Label Grid.Row="5" Grid.Column="0" Content="Last Name" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="lastNameTextBox" Grid.Row="6" Grid.Column="0" Width="200" Margin="5"/>
 
-                <Label Grid.Row="5" Grid.Column="1" Content="Email" HorizontalAlignment="Center"/>
+                <Label Grid.Row="5" Grid.Column="1" Content="Email" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="emailTextBox" Grid.Row="6" Grid.Column="1" Width="200" Margin="5"/>
 
-                <Label Grid.Row="5" Grid.Column="2" Content="Address ID" HorizontalAlignment="Center"/>
+                <Label Grid.Row="5" Grid.Column="2" Content="Address ID" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="addressIdTextBox" Grid.Row="6" Grid.Column="2" Width="200" Margin="5"/>
 
                 <!-- Add Button -->

@@ -5,22 +5,25 @@
         Title="DVD Data Entry" Height="450" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="43.945"/>
+            <ColumnDefinition Width="28.964"/>
+            <ColumnDefinition Width="127.091"/>
             <!-- Side Menu -->
-            <ColumnDefinition Width="217*"/>
+            <ColumnDefinition Width="78*"/>
+            <ColumnDefinition Width="139*"/>
             <ColumnDefinition Width="83*"/>
             <!-- Main Content -->
         </Grid.ColumnDefinitions>
 
         <!-- Side Menu -->
-        <StackPanel Grid.Column="0" Background="Tomato" Margin="0,0,27,0">
+        <StackPanel Grid.Column="0" Background="Tomato" Margin="0,0,27,0" Grid.ColumnSpan="3">
             <Button Content="Actors" Click="ActorsButton_Click" Margin="5" Width="156"/>
             <Button Content="Movies" Click="MoviesButton_Click" Margin="5" Width="153"/>
             <Button Content="Customers" Click="CustomersButton_Click" Margin="5" Width="151"/>
         </StackPanel>
 
         <!-- Main Content -->
-        <Grid Grid.ColumnSpan="3" Margin="178,10,22,-10">
+        <Grid Grid.ColumnSpan="4" Margin="105,10,22,-10" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
@@ -43,13 +46,13 @@
                 </Grid.RowDefinitions>
 
                 <!-- Labels and Text Boxes -->
-                <Label Grid.Row="0" Grid.Column="0" Content="Actor ID" HorizontalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="0" Content="Actor ID" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="actorIdTextBox" Grid.Row="1" Grid.Column="0" Width="200" Margin="5"/>
 
-                <Label Grid.Row="0" Grid.Column="1" Content="First Name" HorizontalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="1" Content="First Name" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="firstNameTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="5"/>
 
-                <Label Grid.Row="0" Grid.Column="2" Content="Last Name" HorizontalAlignment="Center"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="Last Name" HorizontalAlignment="Center" FontWeight="Bold"/>
                 <TextBox x:Name="lastNameTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
 
                 <!-- Add Button -->

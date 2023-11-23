@@ -39,10 +39,10 @@
 
         <!-- Login form elements in another StackPanel -->
         <StackPanel VerticalAlignment="Top" Height="212" Margin="0,222,0,0">
-            <Label Content="Username" HorizontalAlignment="Center"/>
+            <Label Content="Username" HorizontalAlignment="Center" FontWeight="Bold" Width="58" />
             <TextBox x:Name="usernameTextBox" Width="200"  Style="{StaticResource TextBoxStyle}"/>
 
-            <Label Content="Password" HorizontalAlignment="Center"/>
+            <Label Content="Password" HorizontalAlignment="Center" FontWeight="Bold"/>
             <PasswordBox x:Name="passwordBox" Width="200" Style="{StaticResource PasswordBoxStyle}"/>
             <Button Content="Login" Click="LoginButton_Click" Width="326" Style="{StaticResource ButtonStyle}" Height="62"/>
         </StackPanel>
