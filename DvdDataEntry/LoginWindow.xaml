@@ -1,7 +1,7 @@
 ﻿<Window x:Class="DvdDataEntry.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="Login" Height="450" Width="800">
+        Title="Login">
 
     <Window.Resources>
         <!-- Style for TextBox and PasswordBox -->
@@ -23,16 +23,27 @@
     <!-- Set the background image -->
     <Window.Background>
         <ImageBrush ImageSource="C:\Users\Pegiadis\source\repos\DvdDataEntry\DvdDataEntry\Images/istockphoto-911590226-1024x1024.jpg" Opacity="0.2"/>
-        <!-- Replace with your image path -->
     </Window.Background>
 
-    <StackPanel Margin="0,0,0,-61">
-        <Label Content="Username"/>
-        <TextBox x:Name="usernameTextBox" Style="{StaticResource TextBoxStyle}"/>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <!-- for GIF -->
+            <RowDefinition Height="Auto"/>
+            <!-- for login form -->
+        </Grid.RowDefinitions>
 
-        <Label Content="Password"/>
-        <PasswordBox x:Name="passwordBox" Style="{StaticResource PasswordBoxStyle}"/>
+        <!-- Animated GIF in its own StackPanel -->
+        <StackPanel Grid.Row="0" VerticalAlignment="Center"/>
 
-        <Button Content="Login" Click="LoginButton_Click" Style="{StaticResource ButtonStyle}"/>
-    </StackPanel>
+        <!-- Login form elements in another StackPanel -->
+        <StackPanel VerticalAlignment="Top" Height="212" Margin="0,222,0,0">
+            <Label Content="Username" HorizontalAlignment="Center" FontWeight="Bold" Width="58" />
+            <TextBox x:Name="usernameTextBox" Width="200"  Style="{StaticResource TextBoxStyle}"/>
+
+            <Label Content="Password" HorizontalAlignment="Center" FontWeight="Bold"/>
+            <PasswordBox x:Name="passwordBox" Width="200" Style="{StaticResource PasswordBoxStyle}"/>
+            <Button Content="Login" Click="LoginButton_Click" Width="326" Style="{StaticResource ButtonStyle}" Height="62"/>
+        </StackPanel>
+    </Grid>
 </Window>

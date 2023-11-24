@@ -1,20 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
   </PropertyGroup>
-
+  <ItemGroup>
+    <Compile Remove="Artifacts\**" />
+    <EmbeddedResource Remove="Artifacts\**" />
+    <None Remove="Artifacts\**" />
+    <Page Remove="Artifacts\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Images\giphy.gif" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Extended.Wpf.Toolkit" Version="4.5.1" />
+    <PackageReference Include="MaterialDesignThemes" Version="4.9.0" />
     <PackageReference Include="Npgsql" Version="7.0.6" />
     <PackageReference Include="WPF-UI" Version="2.1.0" />
+    <PackageReference Include="XamlAnimatedGif" Version="2.2.0" />
   </ItemGroup>
-
   <ItemGroup>
-    <Folder Include="Artifacts\" />
+    <Resource Include="Images\giphy.gif" />
   </ItemGroup>
-
 </Project>
