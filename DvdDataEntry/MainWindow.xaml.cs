@@ -21,6 +21,13 @@ namespace DvdDataEntry
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Linq;
+    using System.Windows;
+    using Npgsql;
+
     public partial class MainWindow : Window
     {
         private List<ActorModel> entries = new List<ActorModel>();
@@ -31,12 +38,10 @@ namespace DvdDataEntry
             dataGrid.ItemsSource = entries;
         }
 
-
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
             if (int.TryParse(actorIdTextBox.Text, out int actorId))
             {
-
                 var newEntry = new ActorModel
                 {
                     ActorId = actorId,
@@ -47,10 +52,7 @@ namespace DvdDataEntry
                 entries.Add(newEntry);
                 dataGrid.Items.Refresh();
 
-                // Optionally, clear the text boxes after adding
-                actorIdTextBox.Clear();
-                firstNameTextBox.Clear();
-                lastNameTextBox.Clear();
+                ClearTextBoxes();
             }
             else
             {
@@ -58,10 +60,6 @@ namespace DvdDataEntry
             }
         }
 
-
-
-
-        // add a method to handle the remove button click event
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
             var selectedItems = dataGrid.SelectedItems.Cast<ActorModel>().ToList();
@@ -75,7 +73,6 @@ namespace DvdDataEntry
                 dataGrid.Items.Refresh();
             }
         }
-
 
         private void AddToDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
@@ -102,9 +99,7 @@ namespace DvdDataEntry
                         }
                     }
 
-                    actorIdTextBox.Clear();
-                    firstNameTextBox.Clear();
-                    lastNameTextBox.Clear();
+                    ClearTextBoxes();
                 }
                 catch (Exception ex)
                 {
@@ -117,7 +112,6 @@ namespace DvdDataEntry
             }
         }
 
-
         private void ActorsButton_Click(object sender, RoutedEventArgs e)
         {
             // Implementation for when the Actors button is clicked
@@ -126,22 +120,26 @@ namespace DvdDataEntry
 
         private void MoviesButton_Click(object sender, RoutedEventArgs e)
         {
-     
+            // Implementation for when the Movies button is clicked
         }
-
 
         private void CustomersButton_Click(object sender, RoutedEventArgs e)
         {
             CustomerWindow customerWindow = new CustomerWindow();
 
             // Set the position of the new window to match the main window
-            customerWindow.Left = this.Left;
-            customerWindow.Top = this.Top;
+            customerWindow.Left = Left;
+            customerWindow.Top = Top;
 
             customerWindow.Show();
-            this.Close();
+            Close();
         }
 
-
+        private void ClearTextBoxes()
+        {
+            actorIdTextBox.Clear();
+            firstNameTextBox.Clear();
+            lastNameTextBox.Clear();
+        }
     }
 }
