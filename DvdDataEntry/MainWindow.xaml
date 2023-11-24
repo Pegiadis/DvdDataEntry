@@ -1,56 +1,79 @@
 ﻿<Window x:Class="DvdDataEntry.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DvdDataEntry"
-        mc:Ignorable="d"
-        Background="Tan"
+        Background="Gray"
         Title="DVD Data Entry" Height="450" Width="800">
     <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="43.945"/>
+            <ColumnDefinition Width="28.964"/>
+            <ColumnDefinition Width="127.091"/>
+            <!-- Side Menu -->
+            <ColumnDefinition Width="78*"/>
+            <ColumnDefinition Width="139*"/>
+            <ColumnDefinition Width="83*"/>
+            <!-- Main Content -->
+        </Grid.ColumnDefinitions>
 
-        <!-- Data Input Form -->
-        <Grid Grid.Row="0" Margin="10">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="Auto"/>
-            </Grid.ColumnDefinitions>
+        <!-- Side Menu -->
+        <StackPanel Grid.Column="0" Background="Tomato" Margin="0,0,27,0" Grid.ColumnSpan="3">
+            <Button Content="Actors" Click="ActorsButton_Click" Margin="5" Width="156"/>
+            <Button Content="Movies" Click="MoviesButton_Click" Margin="5" Width="153"/>
+            <Button Content="Customers" Click="CustomersButton_Click" Margin="5" Width="151"/>
+        </StackPanel>
+
+        <!-- Main Content -->
+        <Grid Grid.ColumnSpan="4" Margin="105,10,22,-10" Grid.Column="2">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <!-- Row 1 -->
-            <Label Grid.Row="0" Grid.Column="0" Content="Title"/>
-            <TextBox x:Name="titleTextBox" Grid.Row="1" Grid.Column="0" Width="200" Margin="5"/>
+            <!-- Data Input Form -->
+            <Grid Grid.Row="0" Margin="10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="1" Content="Genre"/>
-            <TextBox x:Name="genreTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="5"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Grid.Column="2" Content="Company"/>
-            <TextBox x:Name="companyTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
+                <!-- Labels and Text Boxes -->
+                <Label Grid.Row="0" Grid.Column="0" Content="Actor ID" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBox x:Name="actorIdTextBox" Grid.Row="1" Grid.Column="0" Width="200" Margin="5"/>
 
-            <!-- Row 2 -->
-            <!-- Add additional labels and text boxes for other properties -->
+                <Label Grid.Row="0" Grid.Column="1" Content="First Name" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBox x:Name="firstNameTextBox" Grid.Row="1" Grid.Column="1" Width="200" Margin="5"/>
 
-            <!-- Add Button -->
-            <Button x:Name="addButton" Content="Add" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" Click="AddButton_Click" Margin="5"/>
+                <Label Grid.Row="0" Grid.Column="2" Content="Last Name" HorizontalAlignment="Center" FontWeight="Bold"/>
+                <TextBox x:Name="lastNameTextBox" Grid.Row="1" Grid.Column="2" Width="200" Margin="5"/>
+
+                <!-- Add Button -->
+                <Button x:Name="addButton" Content="Add" Grid.Row="3" Grid.Column="0" Click="AddButton_Click" Margin="151,23,0,0" Width="100" Height="46" Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+
+                <!-- Remove Button -->
+                <Button x:Name="removeButton" Content="Remove" Grid.Row="3" Grid.Column="1" Click="RemoveButton_Click" Margin="84,23,0,0" Width="100" Height="48" RenderTransformOrigin="-0.411,0.62" VerticalAlignment="Top"/>
+
+                <!-- Add to Database Button -->
+            </Grid>
+
+            <!-- DataGrid to Display Data -->
+            <DataGrid x:Name="dataGrid" Margin="10,10,10,75" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Actor ID" Binding="{Binding ActorId}"/>
+                    <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                    <DataGridTextColumn Header=" Name" Binding="{Binding LastName}"/>
+                    <!-- Other columns as needed -->
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button x:Name="addToDatabaseButton" Content="Add to Database" Grid.Row="1" Click="AddToDatabaseButton_Click" Margin="0,214,0,0" Width="147" Height="33" HorizontalAlignment="Center" VerticalAlignment="Top"/>
         </Grid>
-
-        <!-- DataGrid to Display Data -->
-        <DataGrid x:Name="dataGrid" Margin="10,0,10,50" AutoGenerateColumns="False" Grid.Row="1" SelectionMode="Extended">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Title" Binding="{Binding Title}"/>
-                <DataGridTextColumn Header="Genre" Binding="{Binding Genre}"/>
-                <DataGridTextColumn Header="Company" Binding="{Binding Company}"/>
-                <!-- Other columns as needed -->
-            </DataGrid.Columns>
-        </DataGrid>
     </Grid>
 </Window>

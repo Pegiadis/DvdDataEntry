@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,15 +14,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DvdDataEntry.Models;
+using Npgsql;
 
 namespace DvdDataEntry
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
+    using System;
+    using System.Collections.Generic;
+    using System.Configuration;
+    using System.Linq;
+    using System.Windows;
+    using Npgsql;
+
     public partial class MainWindow : Window
     {
-        private List<CustomerModel> entries = new List<CustomerModel>();
+        private List<ActorModel> entries = new List<ActorModel>();
 
         public MainWindow()
         {
@@ -31,27 +40,29 @@ namespace DvdDataEntry
 
         private void AddButton_Click(object sender, RoutedEventArgs e)
         {
-            // Your logic for adding data goes here
-            // For example, retrieving data from text boxes and adding it to a list or database
-
-            var newEntry = new CustomerModel
+            if (int.TryParse(actorIdTextBox.Text, out int actorId))
             {
-                Title = titleTextBox.Text,
-                Genre = genreTextBox.Text
-                // Set other properties if necessary
-            };
+                var newEntry = new ActorModel
+                {
+                    ActorId = actorId,
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text
+                };
 
-            entries.Add(newEntry);
-            dataGrid.Items.Refresh();
+                entries.Add(newEntry);
+                dataGrid.Items.Refresh();
 
-            // Optionally, clear the text boxes after adding
-            titleTextBox.Clear();
-            genreTextBox.Clear();
+                ClearTextBoxes();
+            }
+            else
+            {
+                MessageBox.Show("Actor ID must be an integer.");
+            }
         }
 
         private void RemoveButton_Click(object sender, RoutedEventArgs e)
         {
-            var selectedItems = dataGrid.SelectedItems.Cast<CustomerModel>().ToList();
+            var selectedItems = dataGrid.SelectedItems.Cast<ActorModel>().ToList();
             if (selectedItems.Count > 0)
             {
                 foreach (var item in selectedItems)
@@ -63,34 +74,72 @@ namespace DvdDataEntry
             }
         }
 
-
-        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        private void AddToDatabaseButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
+            if (int.TryParse(actorIdTextBox.Text, out int actorId))
             {
-                if (textBox.Text == "Title" || textBox.Text == "Genre")
+                var newEntry = new ActorModel
                 {
-                    textBox.Text = "";
+                    ActorId = actorId,
+                    FirstName = firstNameTextBox.Text,
+                    LastName = lastNameTextBox.Text
+                };
+
+                try
+                {
+                    using (var conn = new NpgsqlConnection(ConfigurationManager.ConnectionStrings["MyDBConnectionString"].ConnectionString))
+                    {
+                        conn.Open();
+                        using (var cmd = new NpgsqlCommand("INSERT INTO actor (actor_id, first_name, last_name) VALUES (@actor_id, @first_name, @last_name)", conn))
+                        {
+                            cmd.Parameters.AddWithValue("actor_id", newEntry.ActorId);
+                            cmd.Parameters.AddWithValue("first_name", newEntry.FirstName);
+                            cmd.Parameters.AddWithValue("last_name", newEntry.LastName);
+                            cmd.ExecuteNonQuery();
+                        }
+                    }
+
+                    ClearTextBoxes();
                 }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Actor ID must be an integer.");
             }
         }
 
-        private void TextBox_LostFocus(object sender, RoutedEventArgs e)
+        private void ActorsButton_Click(object sender, RoutedEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null)
-            {
-                if (string.IsNullOrWhiteSpace(textBox.Text))
-                {
-                    textBox.Text = textBox.Name == "titleTextBox" ? "Title" : "Genre";
-                }
-            }
+            // Implementation for when the Actors button is clicked
+            // For example, navigate to the Actors view or page
         }
 
-        private void titleTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        private void MoviesButton_Click(object sender, RoutedEventArgs e)
         {
+            // Implementation for when the Movies button is clicked
+        }
 
+        private void CustomersButton_Click(object sender, RoutedEventArgs e)
+        {
+            CustomerWindow customerWindow = new CustomerWindow();
+
+            // Set the position of the new window to match the main window
+            customerWindow.Left = Left;
+            customerWindow.Top = Top;
+
+            customerWindow.Show();
+            Close();
+        }
+
+        private void ClearTextBoxes()
+        {
+            actorIdTextBox.Clear();
+            firstNameTextBox.Clear();
+            lastNameTextBox.Clear();
         }
     }
 }
